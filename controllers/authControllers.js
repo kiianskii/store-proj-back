@@ -60,14 +60,12 @@ const signIn = async (req, res) => {
 };
 
 const getCurrent = (req, res) => {
-  const { email, username, theme, _id, avatarURL } = req.user;
+  const { email, username, _id } = req.user;
 
   res.json({
     id: _id,
     username,
     email,
-    theme,
-    avatarURL,
   });
 };
 
