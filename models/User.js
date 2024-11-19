@@ -17,6 +17,7 @@ const userSchema = new Schema(
       required: [true, "Email is required"],
       unique: true,
     },
+    cart: Array,
     token: String,
   },
   { versionKey: false }

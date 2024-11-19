@@ -1,7 +1,7 @@
 import HttpError from "../helpers/HttpError.js";
 import bcrypt from "bcrypt";
 
-import * as authServices from "../services/authServices.js";
+import * as authServices from "../services/userServices.js";
 import { createToken } from "../helpers/jwt.js";
 import ctrlWrapper from "../helpers/ctrlWrapper.js";
 
@@ -55,6 +55,7 @@ const signIn = async (req, res) => {
       id: user._id,
       username: user.username,
       email: user.email,
+      cart: user.cart,
     },
   });
 };
