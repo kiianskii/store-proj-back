@@ -8,4 +8,8 @@ productsRouter.use(authenticate);
 
 productsRouter.get("/", productsControllers.getProducts);
 
+productsRouter.get("/:category", productsControllers.getProductsByCategory);
+
+productsRouter.get("/categories", productsControllers.getAllCategories);
+
 export default productsRouter;
