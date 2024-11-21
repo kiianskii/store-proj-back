@@ -13,16 +13,13 @@ const getProducts = async (req, res) => {
 
   const products = await getSomeProducts({ filter, settings });
 
+  const categories = await getUniqueCategories();
+
   if (!products) {
     throw HttpError(404, "Products not found");
   }
 
-  res.json(products);
-};
-
-const getAllCategories = async (req, res) => {
-  const categories = await getUniqueCategories();
-  res.json(categories);
+  res.json({ products: products, categories: categories });
 };
 
 const getProductsByCategory = async (req, res) => {
@@ -44,6 +41,5 @@ const getProductsByCategory = async (req, res) => {
 
 export default {
   getProducts: ctrlWrapper(getProducts),
-  getAllCategories: ctrlWrapper(getAllCategories),
   getProductsByCategory: ctrlWrapper(getProductsByCategory),
 };
