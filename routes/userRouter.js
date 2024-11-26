@@ -9,7 +9,7 @@ const userRouter = express.Router();
 userRouter.use(authenticate);
 
 userRouter.post("/cart", isEmptyBody, userControllers.addProduct);
-userRouter.delete("/cart", isEmptyBody, userControllers.removeProduct);
-userRouter.delete("/cart/all", userControllers.removeAllProducts);
+userRouter.delete("/cart/:productId", userControllers.removeProduct);
+userRouter.post("/cart/all", userControllers.removeAllProducts);
 
 export default userRouter;

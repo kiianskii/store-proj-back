@@ -23,7 +23,7 @@ const addProduct = async (req, res) => {
 
 const removeProduct = async (req, res) => {
   const { _id } = req.user;
-  const { productId } = req.body;
+  const { productId } = req.params;
 
   if (!productId) {
     throw HttpError(404, "productId is missing in request body");

@@ -36,7 +36,9 @@ const getProductsByCategory = async (req, res) => {
     throw HttpError(404, "Products in this category not found");
   }
 
-  res.json(products);
+  const categories = await getUniqueCategories();
+
+  res.json({ products: products, categories: categories });
 };
 
 export default {
