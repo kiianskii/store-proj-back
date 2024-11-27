@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
 import { handleError, setUpdateSettings } from "./hooks.js";
 
 const userSchema = new Schema(
@@ -17,7 +17,7 @@ const userSchema = new Schema(
       required: [true, "Email is required"],
       unique: true,
     },
-    cart: Array,
+    cart: [{ type: mongoose.Schema.Types.ObjectId, ref: "product" }],
     token: String,
   },
   { versionKey: false }
