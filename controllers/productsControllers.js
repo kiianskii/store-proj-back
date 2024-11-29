@@ -15,11 +15,17 @@ const getProducts = async (req, res) => {
 
   const categories = await getUniqueCategories();
 
+  const productsOnSale = await getSomeProducts({ filter: { sale: true } });
+
   if (!products) {
     throw HttpError(404, "Products not found");
   }
 
-  res.json({ products: products, categories: categories });
+  res.json({
+    products: products,
+    categories: categories,
+    sale: productsOnSale,
+  });
 };
 
 const getProductsByCategory = async (req, res) => {
