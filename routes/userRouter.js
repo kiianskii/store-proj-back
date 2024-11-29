@@ -11,5 +11,10 @@ userRouter.use(authenticate);
 userRouter.post("/cart", isEmptyBody, userControllers.addProduct);
 userRouter.delete("/cart/:productId", userControllers.removeProduct);
 userRouter.post("/cart/all", userControllers.removeAllProducts);
+userRouter.post(
+  "/cart/:productId",
+  isEmptyBody,
+  userControllers.changeQuantity
+);
 
 export default userRouter;

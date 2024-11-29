@@ -46,8 +46,21 @@ const removeAllProducts = async (req, res) => {
   });
 };
 
+const changeQuantity = async (req, res) => {
+  const { _id } = req.user;
+  const { productId } = req.params;
+  const { quantity } = req.body;
+
+  const result = await updateProductQuantity(_id, productId, quantity);
+
+  res.status(201).json({
+    cart: result.cart,
+  });
+};
+
 export default {
   addProduct: ctrlWrapper(addProduct),
   removeProduct: ctrlWrapper(removeProduct),
   removeAllProducts: ctrlWrapper(removeAllProducts),
+  changeQuantity: ctrlWrapper(changeQuantity),
 };
