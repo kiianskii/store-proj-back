@@ -1,9 +1,10 @@
 import User from "../models/User.js";
 
-export const findUser = (filter) => User.findOne(filter).populate("cart");
+export const findUser = (filter) =>
+  User.findOne(filter).populate("cart.productId");
 
 export const updateUser = (filter, data) =>
-  User.findOneAndUpdate(filter, data).populate("cart");
+  User.findOneAndUpdate(filter, data).populate("cart.productId");
 
 export const signup = (data) => User.create(data);
 
