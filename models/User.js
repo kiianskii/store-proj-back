@@ -17,16 +17,7 @@ const userSchema = new Schema(
       required: [true, "Email is required"],
       unique: true,
     },
-    cart: [
-      {
-        productId: {
-          type: Schema.Types.ObjectId,
-          ref: "product",
-          required: true,
-        },
-        quantity: { type: Number, required: true, min: 1 },
-      },
-    ],
+
     token: String,
   },
   { versionKey: false }

@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 
 import authRouter from "./routes/authRouter.js";
 import productRouter from "./routes/productRouter.js";
-import userRouter from "./routes/userRouter.js";
+import cartRouter from "./routes/cartRouter.js";
 
 dotenv.config();
 
@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRouter);
-app.use("/api/user", userRouter);
+app.use("/api/cart", cartRouter);
 app.use("/api/products", productRouter);
 
 app.use((_, res) => {

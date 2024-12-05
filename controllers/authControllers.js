@@ -2,6 +2,7 @@ import HttpError from "../helpers/HttpError.js";
 import bcrypt from "bcrypt";
 
 import * as authServices from "../services/userService.js";
+import * as cartService from "../services/cartService.js";
 import { createToken } from "../helpers/jwt.js";
 import ctrlWrapper from "../helpers/ctrlWrapper.js";
 
@@ -44,10 +45,11 @@ const signIn = async (req, res) => {
   const payload = {
     id: user._id,
   };
-
   const token = createToken(payload);
 
   await authServices.updateUser({ _id: user._id }, { token });
+
+  const cart = await cartService.getCartByUserId(user._id);
 
   res.json({
     token,
@@ -55,18 +57,8 @@ const signIn = async (req, res) => {
       id: user._id,
       username: user.username,
       email: user.email,
-      cart: user.cart,
+      cart: cart?.items || [],
     },
-  });
-};
-
-const getCurrent = (req, res) => {
-  const { email, username, _id } = req.user;
-
-  res.json({
-    id: _id,
-    username,
-    email,
   });
 };
 
@@ -82,6 +74,5 @@ const signout = async (req, res) => {
 export default {
   signUp: ctrlWrapper(signUp),
   signIn: ctrlWrapper(signIn),
-  getCurrent: ctrlWrapper(getCurrent),
   signout: ctrlWrapper(signout),
 };
