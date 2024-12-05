@@ -1,7 +1,7 @@
 import HttpError from "../helpers/HttpError.js";
 import bcrypt from "bcrypt";
 
-import * as authServices from "../services/userServices.js";
+import * as authServices from "../services/userService.js";
 import { createToken } from "../helpers/jwt.js";
 import ctrlWrapper from "../helpers/ctrlWrapper.js";
 

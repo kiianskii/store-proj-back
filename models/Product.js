@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { handleError, setUpdateSettings } from "./hooks.js";
+import { handleError, setSettings } from "./hooks.js";
 
 const productSchema = new Schema(
   {
@@ -30,7 +30,7 @@ const productSchema = new Schema(
 
 productSchema.post("save", handleError);
 
-productSchema.pre("findOneAndUpdate", setUpdateSettings);
+productSchema.pre("findOneAndUpdate", setSettings);
 
 productSchema.post("findOneAndUpdate", handleError);
 

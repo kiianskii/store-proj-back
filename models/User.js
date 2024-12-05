@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { handleError, setUpdateSettings } from "./hooks.js";
+import { handleError, setSettings } from "./hooks.js";
 
 const userSchema = new Schema(
   {
@@ -34,7 +34,7 @@ const userSchema = new Schema(
 
 userSchema.post("save", handleError);
 
-userSchema.pre("findOneAndUpdate", setUpdateSettings);
+userSchema.pre("findOneAndUpdate", setSettings);
 
 userSchema.post("findOneAndUpdate", handleError);
 

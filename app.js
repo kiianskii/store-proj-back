@@ -5,7 +5,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 import authRouter from "./routes/authRouter.js";
-import productsRouter from "./routes/productsRouter.js";
+import productRouter from "./routes/productRouter.js";
 import userRouter from "./routes/userRouter.js";
 
 dotenv.config();
@@ -18,7 +18,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
-app.use("/api/products", productsRouter);
+app.use("/api/products", productRouter);
 
 app.use((_, res) => {
   res.status(404).json({ message: "Route not found" });

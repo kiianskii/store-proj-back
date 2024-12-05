@@ -3,7 +3,7 @@ import HttpError from "../helpers/HttpError.js";
 import {
   getSomeProducts,
   getUniqueCategories,
-} from "../services/productServices.js";
+} from "../services/productService.js";
 
 const getProducts = async (req, res) => {
   const filter = {};

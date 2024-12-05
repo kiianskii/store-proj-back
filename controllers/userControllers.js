@@ -5,7 +5,7 @@ import {
   clearCart,
   removeFromCart,
   updateProductQuantity,
-} from "../services/userServices.js";
+} from "../services/userService.js";
 
 const addProduct = async (req, res) => {
   const user = req.user;

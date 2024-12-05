@@ -1,6 +1,6 @@
 import HttpError from "../helpers/HttpError.js";
 import { verifyToken } from "../helpers/jwt.js";
-import { findUser } from "../services/userServices.js";
+import { findUser } from "../services/userService.js";
 
 const authenticate = async (req, res, next) => {
   const { authorization } = req.headers;
@@ -25,7 +25,7 @@ const authenticate = async (req, res, next) => {
   }
 
   if (!user.token) {
-    return next(HttpError(401, "User already logout"));
+    return next(HttpError(401, "User unauthorized"));
   }
 
   req.user = user;

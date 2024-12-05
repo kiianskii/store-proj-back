@@ -1,4 +1,4 @@
-import Product from "../models/Products.js";
+import Product from "../models/Product.js";
 
 export const getSomeProducts = (params = {}) => {
   const { filter, fields, settings } = params;
