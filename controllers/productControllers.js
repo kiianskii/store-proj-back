@@ -6,8 +6,17 @@ import {
 } from "../services/productService.js";
 
 const getProducts = async (req, res) => {
-  const filter = {};
-  const { page = 1, limit = 10 } = req.query;
+  const { page = 1, limit = 10, value } = req.query;
+
+  const filter = value
+    ? {
+        $or: [
+          { title: { $regex: value, $options: "i" } },
+          { description: { $regex: value, $options: "i" } },
+        ],
+      }
+    : {};
+
   const skip = (page - 1) * limit;
   const settings = { skip, limit };
 
