@@ -112,16 +112,8 @@ const refresh = async (req, res) => {
 
   await authService.updateUser({ _id: user._id }, { token: newToken });
 
-  const cart = await cartService.getCartByUserId(user._id);
-
   res.json({
     token: newToken,
-    user: {
-      id: user._id,
-      username: user.username,
-      email: user.email,
-      cart: cart?.items || [],
-    },
   });
 };
 
